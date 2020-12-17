@@ -10,6 +10,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var fab1: FloatingActionButton
     private lateinit var fab2: FloatingActionButton
     private lateinit var fab3: FloatingActionButton
+    var isOpen:Boolean=false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -22,7 +23,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         fab3.alpha = 0F
         fab1.alpha = 0F
 
-        fab.transition
+        fab3.translationY=100F
+        fab2.translationY=100F
+        fab1.translationY=100F
 
         fab.setOnClickListener(this)
         fab1.setOnClickListener(this)
