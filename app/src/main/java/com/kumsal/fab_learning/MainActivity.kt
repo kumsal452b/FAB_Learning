@@ -11,8 +11,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var fab1: FloatingActionButton
     private lateinit var fab2: FloatingActionButton
     private lateinit var fab3: FloatingActionButton
-    var isOpen:Boolean=false
-    var interPolator:OvershootInterpolator= OvershootInterpolator()
+    var isOpen: Boolean = false
+    var interPolator: OvershootInterpolator = OvershootInterpolator()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,27 +40,39 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         fab2.setOnClickListener(this)
         fab3.setOnClickListener(this)
     }
-    private fun open(){
-        isOpen=true
+
+    private fun open() {
+        isOpen = true
         fab.animate().setInterpolator(interPolator).rotationBy(45f).setDuration(300).start()
-        fab1.animate().translationY(0F).alpha(1F).setInterpolator(interPolator).setDuration(300).start()
-        fab2.animate().translationY(0F).alpha(1F).setInterpolator(interPolator).setDuration(300).start()
-        fab3.animate().translationY(0F).alpha(1F).setInterpolator(interPolator).setDuration(300).start()
+        fab1.animate().translationY(0F).alpha(1F).setInterpolator(interPolator).setDuration(300)
+            .start()
+        fab2.animate().translationY(0F).alpha(1F).setInterpolator(interPolator).setDuration(300)
+            .start()
+        fab3.animate().translationY(0F).alpha(1F).setInterpolator(interPolator).setDuration(300)
+            .start()
 
     }
-    private fun close(){
-        isOpen=false
+
+    private fun close() {
+        isOpen = false
         fab.animate().setInterpolator(interPolator).rotationBy(0f).setDuration(300).start()
-        fab1.animate().translationY(100F).alpha(0F).setInterpolator(interPolator).setDuration(300).start()
-        fab2.animate().translationY(100F).alpha(0F).setInterpolator(interPolator).setDuration(300).start()
-        fab3.animate().translationY(100F).alpha(0F).setInterpolator(interPolator).setDuration(300).start()
+        fab1.animate().translationY(100F).alpha(0F).setInterpolator(interPolator).setDuration(300)
+            .start()
+        fab2.animate().translationY(100F).alpha(0F).setInterpolator(interPolator).setDuration(300)
+            .start()
+        fab3.animate().translationY(100F).alpha(0F).setInterpolator(interPolator).setDuration(300)
+            .start()
 
     }
 
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.fab ->
-                println("fab")
+                if (!isOpen) {
+                    open()
+                } else {
+                    close()
+                }
             R.id.fab1 ->
                 println("fab1")
             R.id.fab2 ->
